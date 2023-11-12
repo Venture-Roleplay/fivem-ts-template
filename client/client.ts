@@ -1,0 +1,1 @@
+/* FiveM Typescript Boilerplate by Whitigol */
