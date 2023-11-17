@@ -1,6 +1,10 @@
 /* FiveM Typescript Boilerplate by Whitigol */
 
 const esbuild = require("esbuild");
+const obfuscator = require("javascript-obfuscator");
+const fs = require("fs");
+
+const OBFUSCATE = true;
 
 const production =
     process.argv.findIndex((argItem) => argItem === "--mode=production") >= 0;
@@ -40,6 +44,24 @@ for (const context of ["client", "server"]) {
                   },
             ...(context === "client" ? client : server),
         })
-        .then(() => console.log(`[${context}]: Built successfully!`))
+        .then(() => {
+            if (OBFUSCATE) {
+                const code = fs.readFileSync(`dist/${context}.js`, "utf8");
+                const obfuscatedCode = obfuscator.obfuscate(code, {
+                    compact: true,
+                    controlFlowFlattening: true,
+                    controlFlowFlatteningThreshold: 1,
+                    deadCodeInjection: true,
+                    deadCodeInjectionThreshold: 1,
+                    debugProtection: false,
+                    disableConsoleOutput: false,
+                });
+                fs.writeFileSync(
+                    `dist/${context}.js`,
+                    obfuscatedCode.getObfuscatedCode()
+                );
+            }
+            console.log(`[${context}]: Built successfully!`);
+        })
         .catch(() => process.exit(1));
 }

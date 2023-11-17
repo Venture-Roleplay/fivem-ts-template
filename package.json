@@ -12,6 +12,7 @@
     "@citizenfx/client": "latest",
     "@citizenfx/server": "latest",
     "@types/node": "^16.3.1",
-    "esbuild": "^0.14.10"
+    "esbuild": "^0.14.10",
+    "javascript-obfuscator": "^4.1.0"
   }
 }
