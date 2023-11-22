@@ -15,7 +15,10 @@ const onRebuild = (context) => {
             return console.error(`[${context}]: Rebuild failed`, err);
         }
 
-        console.log(`[${context}]: Rebuild succeeded, warnings:`, res.warnings);
+        console.log(
+            `[${context}]: Rebuild succeeded` +
+                (res.warnings.length ? "Warnings: " + res.warnings : "")
+        );
     };
 };
 
@@ -61,7 +64,26 @@ for (const context of ["client", "server"]) {
                     obfuscatedCode.getObfuscatedCode()
                 );
             }
+
+            console.log(`[${context}]: Moved files to output directory`);
+
+            MoveFilesToOutput();
+
             console.log(`[${context}]: Built successfully!`);
         })
         .catch(() => process.exit(1));
+}
+
+function MoveFilesToOutput() {
+    const dir = fs.readFileSync(`.dir`, "utf8");
+
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+
+    fs.copyFileSync(`config.json`, `${dir}/config.json`);
+    fs.copyFileSync(`fxmanifest.lua`, `${dir}/fxmanifest.lua`);
+    fs.existsSync(`${dir}/dist`) &&
+        fs.rmdirSync(`${dir}/dist`, { recursive: true });
+    fs.mkdirSync(`${dir}/dist`);
+    fs.copyFileSync(`dist/client.js`, `${dir}/dist/client.js`);
+    fs.copyFileSync(`dist/server.js`, `${dir}/dist/server.js`);
 }
