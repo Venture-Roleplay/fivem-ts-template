@@ -15,6 +15,8 @@ const onRebuild = (context) => {
             return console.error(`[${context}]: Rebuild failed`, err);
         }
 
+        Finish(context);
+
         console.log(
             `[${context}]: Rebuild succeeded` +
                 (res.warnings.length ? "Warnings: " + res.warnings : "")
@@ -48,26 +50,7 @@ for (const context of ["client", "server"]) {
             ...(context === "client" ? client : server),
         })
         .then(() => {
-            if (OBFUSCATE) {
-                const code = fs.readFileSync(`dist/${context}.js`, "utf8");
-                const obfuscatedCode = obfuscator.obfuscate(code, {
-                    compact: true,
-                    controlFlowFlattening: true,
-                    controlFlowFlatteningThreshold: 1,
-                    deadCodeInjection: true,
-                    deadCodeInjectionThreshold: 1,
-                    debugProtection: false,
-                    disableConsoleOutput: false,
-                });
-                fs.writeFileSync(
-                    `dist/${context}.js`,
-                    obfuscatedCode.getObfuscatedCode()
-                );
-            }
-
-            console.log(`[${context}]: Moved files to output directory`);
-
-            MoveFilesToOutput();
+            Finish(context);
 
             console.log(`[${context}]: Built successfully!`);
         })
@@ -75,6 +58,39 @@ for (const context of ["client", "server"]) {
 }
 
 function MoveFilesToOutput() {
+    const dir = fs.readFileSync(`.dir`, "utf8");
+
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+
+    fs.copyFileSync(`config.json`, `${dir}/config.json`);
+    fs.copyFileSync(`fxmanifest.lua`, `${dir}/fxmanifest.lua`);
+    fs.existsSync(`${dir}/dist`) &&
+        fs.rmdirSync(`${dir}/dist`, { recursive: true });
+    fs.mkdirSync(`${dir}/dist`);
+    fs.copyFileSync(`dist/client.js`, `${dir}/dist/client.js`);
+    fs.copyFileSync(`dist/server.js`, `${dir}/dist/server.js`);
+}
+
+function Finish(context) {
+    // Obfuscate
+    if (OBFUSCATE) {
+        const code = fs.readFileSync(`dist/${context}.js`, "utf8");
+        const obfuscatedCode = obfuscator.obfuscate(code, {
+            compact: true,
+            controlFlowFlattening: true,
+            controlFlowFlatteningThreshold: 1,
+            deadCodeInjection: true,
+            deadCodeInjectionThreshold: 1,
+            debugProtection: false,
+            disableConsoleOutput: false,
+        });
+        fs.writeFileSync(
+            `dist/${context}.js`,
+            obfuscatedCode.getObfuscatedCode()
+        );
+    }
+
+    // Move to output directory
     const dir = fs.readFileSync(`.dir`, "utf8");
 
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
