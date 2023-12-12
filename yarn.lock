@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@citizenfx/client@latest":
-  version "2.0.7080-1"
-  resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.7080-1.tgz#768784436bb1489c7aaa0808f7e56e9472f9bbbe"
-  integrity sha512-xPfKcXalIqignRSATArDkTIBZ780NYhkMfA+OXbTXlxj2UgTUk0hLYUjp3U1M3cVPQvK7OusNT7maat56ce0Hw==
+"@citizenfx/client@2.0.7190-1":
+  version "2.0.7190-1"
+  resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.7190-1.tgz#23f5934c0fc21921ef938f4f50bfacc6dded1247"
+  integrity sha512-gjztD0SqulSJgW9wyWdGKSE2kfK36eVYUG6H1jN/fXI4Nh7GAtJS2EzWUKxUF+QOdk2zYm4tVset+dudFMUcIg==
 
-"@citizenfx/server@latest":
-  version "2.0.7080-1"
-  resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.7080-1.tgz#e0cc3760e039cc4acc509754d746da41e8e2236d"
-  integrity sha512-U5neFDSN00b2A9w8P3JCJSyJ4TcosXrNw+IxnIqYkS0waLUFU+wHrrccARLT8So8SGqQ2D2RsEx6uEmefjiBxQ==
+"@citizenfx/server@2.0.7190-1":
+  version "2.0.7190-1"
+  resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.7190-1.tgz#e63aab00c7108764cb8a5f7be9db49d9d6410a6e"
+  integrity sha512-v2H/lePCitbVPl35TKEJf6XaUaDEgU01poVKpAn+dJJ0+1+cEG1OYdtXGjVk63X05T/PPTvNM+xpEANRTd2X0Q==
 
 "@esbuild/linux-loong64@0.14.54":
   version "0.14.54"
@@ -39,15 +39,27 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.5.tgz#1001cc5e6a3704b83c236027e77f2f58ea010f40"
   integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
 
-"@types/node@^16.3.1":
-  version "16.18.61"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.61.tgz#5ea47e3018348bf3bbbe646b396ba5e720310be1"
-  integrity sha512-k0N7BqGhJoJzdh6MuQg1V1ragJiXTh8VUBAZTWjJ9cUq23SG0F0xavOwZbhiP4J3y20xd6jxKx+xNUhkMAi76Q==
+"@types/node@^20.10.4":
+  version "20.10.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.10.4.tgz#b246fd84d55d5b1b71bf51f964bd514409347198"
+  integrity sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==
+  dependencies:
+    undici-types "~5.26.4"
 
 "@types/validator@^13.7.10":
-  version "13.11.6"
-  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.11.6.tgz#8645efedfd891bc1d7ad82539005d7ff785fe294"
-  integrity sha512-HUgHujPhKuNzgNXBRZKYexwoG+gHKU+tnfPqjWXFghZAnn73JElicMkuSKJyLGr9JgyA8IgK7fj88IyA9rwYeQ==
+  version "13.11.7"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.11.7.tgz#99e19760297667ae46b7069ec8b96cbfe0a08b98"
+  integrity sha512-q0JomTsJ2I5Mv7dhHhQLGjMvX0JJm5dyZ1DXQySIUzU1UlwzB8bt+R6+LODUbz0UDIOvEzGc28tk27gBJw2N8Q==
+
+"@whitigol/fivem-utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@whitigol/fivem-utils/-/fivem-utils-1.0.1.tgz#ac1bbc21fcf3ad354643b4f822917722dbb02f3c"
+  integrity sha512-3tu0033mBCNyWwGHHFTm7Z5MLexwPYiQdNQXXLWVcr+cJW6IDzoPzXZfPHWlBpcCyt5vW+LTy9aMb6eTxA+NJQ==
+
+"@whitigol/menu-api@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@whitigol/menu-api/-/menu-api-1.0.3.tgz#cd7ee90927410ee14776206992b7e4770c106c35"
+  integrity sha512-mLA+WH3llcOXba0XpiTz6Xw1Vvp514vBfC2+SOAwfKJyYo7pnB8M0NjawjnQc5D3PVZbqsZs6HDavHJPp3iO1g==
 
 acorn@8.8.2:
   version "8.8.2"
@@ -199,6 +211,11 @@ define-properties@^1.1.3:
     define-data-property "^1.0.1"
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
+
+dotenv@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 es6-object-assign@^1.1.0:
   version "1.1.0"
@@ -535,9 +552,9 @@ levn@~0.3.0:
     type-check "~0.3.2"
 
 libphonenumber-js@^1.10.14:
-  version "1.10.49"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.49.tgz#c871661c62452348d228c96425f75ddf7e10f05a"
-  integrity sha512-gvLtyC3tIuqfPzjvYLH9BmVdqzGDiSi4VjtWe2fAgSdBf0yt8yPmbNnRIHNbR5IdtVkm0ayGuzwQKTWmU0hdjQ==
+  version "1.10.51"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.51.tgz#a3b8c15db2721c3e5f7fe6759e2a524712b578e6"
+  integrity sha512-vY2I+rQwrDQzoPds0JeTEpeWzbUJgqoV0O4v31PauHBb/e+1KCXKylHcDnBMgJZ9fH9mErsEbROJY3Z3JtqEmg==
 
 md5@2.3.0:
   version "2.3.0"
@@ -669,6 +686,11 @@ type-check@~0.3.2:
   integrity sha512-ZCmOJdvOWDBYJlzAoFkC+Q0+bUyEOS1ltgp1MGU03fqHG+dbi9tBFU2Rd9QKiDZFAYrhPh2JUf7rZRIuHRKtOg==
   dependencies:
     prelude-ls "~1.1.2"
+
+undici-types@~5.26.4:
+  version "5.26.5"
+  resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
+  integrity sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==
 
 util@^0.12.0:
   version "0.12.5"

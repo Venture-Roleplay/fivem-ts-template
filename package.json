@@ -1,18 +1,23 @@
 {
-  "name": "fivem-ts-template",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "you",
-  "license": "MIT",
-  "scripts": {
-    "build": "node build.js --mode=production",
-    "watch": "node build.js"
-  },
-  "devDependencies": {
-    "@citizenfx/client": "latest",
-    "@citizenfx/server": "latest",
-    "@types/node": "^16.3.1",
-    "esbuild": "^0.14.10",
-    "javascript-obfuscator": "^4.1.0"
-  }
+    "name": "fivem-ts-template",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Whitigol",
+    "license": "MIT",
+    "scripts": {
+        "build": "node build.mjs --mode=production",
+        "watch": "node build.mjs",
+        "pkg": "yarn upgrade-interactive --latest",
+        "template": "git remote add template https://github.com/Venture-Roleplay/fivem-ts-template.git && git fetch template && git merge template/main --allow-unrelated-histories"
+    },
+    "devDependencies": {
+        "@citizenfx/client": "2.0.7190-1",
+        "@citizenfx/server": "2.0.7190-1",
+        "@types/node": "^20.10.4",
+        "@whitigol/fivem-utils": "^1.0.1",
+        "@whitigol/menu-api": "1.0.3",
+        "dotenv": "^16.3.1",
+        "esbuild": "^0.14.10",
+        "javascript-obfuscator": "^4.1.0"
+    }
 }

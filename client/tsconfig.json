@@ -8,7 +8,9 @@
       "es2021"
     ],
     "types": [
-      "@citizenfx/client"
+      "@citizenfx/client",
+      "@whitigol/fivem-utils",
+      "@whitigol/menu-api"
     ],
     "moduleResolution": "node",
     "resolveJsonModule": true,
