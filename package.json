@@ -8,7 +8,7 @@
         "build": "node build.mjs --mode=production",
         "watch": "node build.mjs",
         "pkg": "yarn upgrade-interactive --latest",
-        "template": "git remote add template https://github.com/Venture-Roleplay/fivem-ts-template.git && git fetch template && git merge template/main --allow-unrelated-histories"
+        "template": "git remote remove template && git remote add template https://github.com/Venture-Roleplay/fivem-ts-template.git && git fetch template && git merge template/main --allow-unrelated-histories"
     },
     "devDependencies": {
         "@citizenfx/client": "2.0.7190-1",
