@@ -93,7 +93,7 @@ function Finish(context) {
 
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
 
-    fs.copyFileSync(`config.json`, `${dir}/config.json`);
+    fs.copyFileSync(`config.json5`, `${dir}/config.json5`);
     fs.copyFileSync(`fxmanifest.lua`, `${dir}/fxmanifest.lua`);
     fs.existsSync(`${dir}/dist`) &&
         fs.rmSync(`${dir}/dist`, { recursive: true });

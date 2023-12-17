@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "es2021",
+      "lib": [
+        "es2021"
+      ],
+      "types": [
+        "@citizenfx/server",
+        "@citizenfx/client",
+        "@types/node"
+      ],
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "noEmit": true
+    },
+    "include": [
+      "./",
+      "../common"
+    ]
+  }
