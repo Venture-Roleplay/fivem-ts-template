@@ -1,5 +1,5 @@
 {
-    "watch": ["config.json5"],
+    "watch": ["config.json"],
     "exec": "node ./quickType.mjs",
     "quiet": true
 }

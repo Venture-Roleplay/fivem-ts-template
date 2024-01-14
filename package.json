@@ -5,7 +5,7 @@
     "author": "Whitigol",
     "license": "MIT",
     "scripts": {
-        "dev": "concurrently \"yarn watch\" \"yarn watch:types\"",
+        "dev": "concurrently \"yarn watch\" \"yarn watch:types\" --parallel --kill-others --names \"build,types\" --prefix \"[{name}] \"",
         "build": "node build.mjs --mode=production",
         "watch": "node build.mjs",
         "watch:types": "nodemon",
