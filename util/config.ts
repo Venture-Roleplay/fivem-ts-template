@@ -1,6 +1,6 @@
 import { Config } from "../config";
 const config = JSON.parse(
-    LoadResourceFile(GetCurrentResourceName(), "config.json")
+    LoadResourceFile(GetCurrentResourceName(), "internal/config.json")
 ) as Config;
 
 export default config;
