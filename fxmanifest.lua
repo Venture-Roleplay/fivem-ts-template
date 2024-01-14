@@ -1,12 +1,9 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
-
-author 'Whitigol'
-version '1.0.0'
 
 client_script 'dist/client.js'
 server_script 'dist/server.js'
 
-files {'nui/**/*', 'stream/**/*', 'internal/**/*', 'config.json5'}
+files {'nui/**/*', 'stream/**/*', 'config.json'}
 
 data_file 'DLC_ITYP_REQUEST' 'stream/**/*.ytyp'
