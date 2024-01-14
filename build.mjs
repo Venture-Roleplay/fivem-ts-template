@@ -8,7 +8,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 if (process.env.NODE_ENV !== "development") {
-    // Read .dir
     if (fs.readFileSync(`.dir`, "utf8") === "./out") {
         console.log("Please change the .dir file to your output directory.");
         process.exit(1);
@@ -69,7 +68,6 @@ for (const context of ["client", "server"]) {
 }
 
 function Finish(context) {
-    // Obfuscate
     if (OBFUSCATE) {
         const code = fs.readFileSync(`dist/${context}.js`, "utf8");
         const obfuscatedCode = obfuscator.obfuscate(code, {
@@ -88,12 +86,11 @@ function Finish(context) {
         );
     }
 
-    // Move to output directory
     const dir = fs.readFileSync(`.dir`, "utf8");
 
     if (!fs.existsSync(dir)) fs.mkdirSync(dir);
 
-    fs.copyFileSync(`config.json5`, `${dir}/config.json5`);
+    fs.copyFileSync(`config.json`, `${dir}/config.json`);
     fs.copyFileSync(`fxmanifest.lua`, `${dir}/fxmanifest.lua`);
     fs.existsSync(`${dir}/dist`) &&
         fs.rmSync(`${dir}/dist`, { recursive: true });
@@ -101,13 +98,11 @@ function Finish(context) {
     fs.copyFileSync(`dist/client.js`, `${dir}/dist/client.js`);
     fs.copyFileSync(`dist/server.js`, `${dir}/dist/server.js`);
 
-    // Stream Files
     if (fs.existsSync(`stream`)) {
         fs.existsSync(`${dir}/stream`) &&
             fs.rmSync(`${dir}/stream`, { recursive: true });
         fs.mkdirSync(`${dir}/stream`);
 
-        // copy all files in stream, and subfolders, with files inside them, to the output dir/stream
         const copyStreamFiles = (dir, target) => {
             fs.readdirSync(dir).forEach((file) => {
                 const filePath = `${dir}/${file}`;
@@ -124,13 +119,11 @@ function Finish(context) {
         copyStreamFiles("stream", `${dir}/stream`);
     }
 
-    // NUI Files
     if (fs.existsSync("nui")) {
         fs.existsSync(`${dir}/nui`) &&
             fs.rmSync(`${dir}/nui`, { recursive: true });
         fs.mkdirSync(`${dir}/nui`);
 
-        // copy all files in nui, and subfolders, with files inside them, to the output dir/nui
         const copyNuiFiles = (dir, target) => {
             fs.readdirSync(dir).forEach((file) => {
                 const filePath = `${dir}/${file}`;
@@ -145,5 +138,26 @@ function Finish(context) {
         };
 
         copyNuiFiles("nui", `${dir}/nui`);
+    }
+
+    if (fs.existsSync("data")) {
+        fs.existsSync(`${dir}/data`) &&
+            fs.rmSync(`${dir}/data`, { recursive: true });
+        fs.mkdirSync(`${dir}/data`);
+
+        const copyDataFiles = (dir, target) => {
+            fs.readdirSync(dir).forEach((file) => {
+                const filePath = `${dir}/${file}`;
+                const targetPath = `${target}/${file}`;
+                if (fs.lstatSync(filePath).isDirectory()) {
+                    fs.mkdirSync(targetPath);
+                    copyDataFiles(filePath, targetPath);
+                } else {
+                    fs.copyFileSync(filePath, targetPath);
+                }
+            });
+        };
+
+        copyDataFiles("data", `${dir}/data`);
     }
 }

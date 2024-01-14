@@ -5,7 +5,7 @@
     "author": "Whitigol",
     "license": "MIT",
     "scripts": {
-        "dev": "npm-run-all --parallel watch watch:types",
+        "dev": "concurrently \"yarn watch\" \"yarn watch:types\"",
         "build": "node build.mjs --mode=production",
         "watch": "node build.mjs",
         "watch:types": "nodemon",
@@ -18,14 +18,11 @@
         "@types/node": "^20.10.4",
         "@whitigol/fivem-utils": "^1.0.1",
         "@whitigol/menu-api": "1.0.3",
+        "concurrently": "^8.2.2",
         "dotenv": "^16.3.1",
         "esbuild": "^0.14.10",
         "javascript-obfuscator": "^4.1.0",
         "nodemon": "^3.0.2",
-        "quicktype-core": "^23.0.80",
-        "yarn-run-all": "^3.1.1"
-    },
-    "dependencies": {
-        "json5": "^2.2.3"
+        "quicktype-core": "^23.0.80"
     }
 }

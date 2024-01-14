@@ -1,13 +1,11 @@
 import fs from "fs";
-import json5 from "json5";
 import path from "path";
 import quicktype from "quicktype-core";
 
 async function Generate() {
-    const jsonString = JSON.stringify(
-        json5.parse(
-            fs.readFileSync(path.join(process.cwd(), "config.json5"), "utf8")
-        )
+    const jsonString = fs.readFileSync(
+        path.join(process.cwd(), "config.json"),
+        "utf8"
     );
     const jsonInput = quicktype.jsonInputForTargetLanguage("typescript");
     await jsonInput.addSource({
